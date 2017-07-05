@@ -1,0 +1,39 @@
+
+<table  border="1">
+  <h2> <%= @track.name %>  </h2>
+
+
+  <h3> This was a <%= @track.bonus %> track in the album <%= @track.album.name %> by <%= @track.band.name %> </h3>
+
+<br>
+
+    <h2> Lyrics  </h2>
+    <br>
+    <p> <%= @track.lyrics %>  </p>
+
+<br>
+<br>
+
+<form action= "<%= tracks_url %>" method="get">
+<input type="submit" name="" value="Every single song we got, homie.">
+</form>
+
+
+<br>
+<br>
+
+<form action= "<%= edit_track_url(@track) %>" method="get">
+<input type="submit" name="" value="Edit this Track">
+</form>
+
+
+<form action= "<%= track_url(@track) %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="" value="Delete this Track">
+</form>
+
+
+<form action= "<%= track_url(@track) %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="" value="Delete this Track">
+</form>

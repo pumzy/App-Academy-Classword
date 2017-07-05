@@ -1,0 +1,38 @@
+
+
+<% action_url = cat.persisted? ? cat_url : cats_url %>
+
+<form action="<%= action_url %>" method="post">
+  <% if cat.persisted?  %>
+    <input type="hidden" name="_method" value="PATCH">
+  <% end %>
+
+  <label for="name">Name</label>
+  <input id="name" type="text" name="cat[name]" value=" <%= cat.name %>">
+  <br>
+  <br>
+  <label for="sex">Sex</label>
+<ul id ="sex">
+  <li>  M<input value="M"  type="radio" name="cat[sex]" <%= cat.sex == 'M' ? "checked" : "" %>> </li>
+  <li>  F<input value="F"  type="radio" name="cat[sex]" <%= cat.sex == 'F' ? "checked" : "" %>> </li>
+</ul>
+  <br>
+
+<label for="color">Color</label>
+<select id = "color"  name="cat[color]">
+  <% Cat.colors.each do |color| %>
+  <option value="<%= color %>" <%= cat.color == color ? "selected" : "" %> > <%= color %> </option>
+  <% end %>
+</select>
+<br>
+<br>
+<label for="bd">Date of Birth</label>
+<input id = "bd" type="date" name="cat[birth_date]" value = <%=cat.birth_date%> >
+
+<br>
+<br>
+
+<label for="description">Tell us about your cat</label>
+<textarea name="cat[description]" rows="5" cols="50" ><%= cat.description %></textarea>
+<input type="submit"></input>
+</form>

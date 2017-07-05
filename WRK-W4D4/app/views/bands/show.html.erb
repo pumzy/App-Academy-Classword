@@ -1,0 +1,48 @@
+<h2> <%= @band.name %> </h2>
+
+<table  border="1">
+  <caption>Discorgraphy</caption>
+  <tr>
+    <th> Album Name </th>
+    <th> Studio/Live </th>
+    <th> Link </th>
+  </tr>
+  <% @band.albums.each do |album| %>
+  <tr>
+    <th> <%= album.name %> </th>
+    <th> <%= album.venue %> </th>
+    <th>  <form class="" action=" <%= album_url(album) %> " method="get">
+      <input type="submit" name="" value="Tracks">
+    </form>
+    </th>
+  </tr>
+  <% end %>
+</table>
+
+<br>
+
+<form action= "<%= new_album_url %>" method="get">
+<input type="submit" value="Add an album!">
+</form>
+
+
+<br>
+<br>
+
+<form action= "<%= bands_url %>" method="get">
+<input type="submit" name="" value="Back to the Bands Page">
+</form>
+
+
+<br>
+<br>
+
+<form action= "<%= edit_band_url(@band) %>" method="get">
+<input type="submit" name="" value="Edit this band">
+</form>
+
+
+<form action= "<%= band_url(@band) %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="" value="Delete this Band">
+</form>

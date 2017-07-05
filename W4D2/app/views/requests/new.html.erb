@@ -1,0 +1,18 @@
+
+<form action= "<%= requests_url %>" method="post">
+
+
+  <label for="name">Select your cat</label>
+  <select id = "name"  name="req[cat_id]">
+    <% @cats.each do |cat| %>
+    <option value="<%= cat.id %>" > <%= cat.name %> </option>
+    <% end %>
+  </select>
+
+  <label for="sd">Start Date</label>
+  <input id = "sd" type="date" name="req[start_date]" >
+  <label for="ed">End Date</label>
+  <input id = "ed" type="date" name="req[end_date]"  >
+
+  <input type="submit" value="Submit">
+</form>

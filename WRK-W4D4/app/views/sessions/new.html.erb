@@ -1,0 +1,18 @@
+
+<form class="" action="<%=new_user_url%>" method="get">
+  <input type="submit" name="" value="Sign Up">
+</form>
+
+<h2>Welcome! Please input your details</h2>
+
+  <form action="<%= session_url  %>" method="post">
+
+  <label for="email">E-Mail Address</label>
+  <input id = "email" type="text" name="user[email]">
+  <br>
+  <br>
+  <label for="email">Password</label>
+  <input id = "email" type="text" name="user[password]">
+
+  <input type="submit" value="Log In!">
+</form>

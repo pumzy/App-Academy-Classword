@@ -1,0 +1,26 @@
+<h1>Edit <%= @album.name %></h1>
+
+
+
+<form class="" action="<%= album_url(@album) %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <h3>Change Name</h3>
+  <input type="text" name="album[name]" value="<%= @album.name %>">
+
+  <h3>Change Artist this album is listed under</h3>
+  <select name = "album[band_id]" >
+  <% @bands.each do |band| %>
+   <option value= "<%= band %>" <%=  band.albums.include?(@album) ? "selected" : ""  %>  > <%= band.name %> </option>
+  <% end %>
+  </select>
+
+  <h3>Change the venue of the album</h3>
+  <input type="radio" name="album[venue]" value="Studio" <%= @album.venue == "Studio" ? "checked": "" %>  > Studio <br>
+  <input type="radio" name="album[venue]" value="Live"   <%= @album.venue == "Live" ? "checked": "" %>  > Live <br>
+
+  <br>
+  <input type="submit">
+
+
+</form>

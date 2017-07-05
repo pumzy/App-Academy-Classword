@@ -1,0 +1,30 @@
+<h1>List of Tracks</h1>
+
+<table>
+  <tbody>
+    <% @tracks.each do |track| %>
+    <% album = track.album %>
+    <% band = track.band %>
+      <tr>
+        <td><%= track.name %></td>
+
+        <td> <form action= "<%= track_url(track) %>" method="get">
+                <input type="submit" value = "Song info">
+              </form> </td>
+        <td> <form action= "<%= album_url(album) %>" method="get">
+                <input type="submit" value = " Album Info - <%= album.name %>">
+              </form> </td>
+        <td> <form action= "<%= band_url(band) %>" method="get">
+                <input type="submit" value = " Band Info - <%= band.name %>">
+              </form> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h3>Add a new track!</h3>
+<form action="<%= new_track_url %>" method="get">
+  <input type="submit"  value = "Take me to the new track page">
+</form>

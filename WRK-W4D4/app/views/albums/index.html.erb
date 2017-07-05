@@ -1,0 +1,28 @@
+<h1>List of albums</h1>
+
+<table>
+  <tbody>
+    <% @albums.each do |album| %>
+    <% band = album.band %>
+      <tr>
+        <td><%= album.name %></td>
+        <td> <form action= "<%= album_url(album) %>" method="get">
+                <input type="submit" value = "Tracks">
+              </form> </td>
+        <td> <form action= "<%= band_url(band) %>" method="get">
+                <input type="submit" value = " Band Info - <%= band.name %>">
+              </form> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<br>
+
+<h3>Add a new album!</h3>
+<form action="<%= new_album_url %>" method="get">
+  <input type="submit"  value = "This band has a hip new album you havent heard about, you pleb.">
+</form>

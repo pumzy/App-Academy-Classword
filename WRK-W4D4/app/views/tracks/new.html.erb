@@ -1,0 +1,20 @@
+<h2>Add a track to our app!</h2>
+
+<form action="<%= tracks_url %>" method="post">
+  <h3>What is the name of the track?</h3>
+  <input type="text" name="track[name]">
+
+  <h3>Which album was this track in?</h3>
+  <select name = "track[album_id]" >
+  <% @albums.each do |album| %>
+   <option value= "<%= album.id %>"> <%= album.name %> </option>
+  <% end %>
+  </select>
+
+  <h3>What type of track is this?</h3>
+  <input type="radio" name="track[bonus]" value="Bonus"> Bonus <br>
+  <input type="radio" name="track[bonus]" value="Regular"> Regular <br>
+
+  <input type="submit" >
+
+</form>

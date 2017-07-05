@@ -1,0 +1,50 @@
+require 'byebug'
+#!/usr/bin/env ruby
+class CLI
+  def prompt
+    puts "What is your email"
+    gets.chomp
+  end
+
+  def prompt_choice
+    puts "Do you want to shorten a URL or visit an existing one (S/V)"
+    input = gets.chomp
+  end
+
+  def prompt_url
+    puts "What is your url?"
+    gets.chomp
+  end
+
+  def run
+    email = prompt
+    user = nil
+    presence = User.find_by(:email => email)
+
+    if presence == nil
+      user = User.create(:email => email)
+
+    else
+      user = presence
+    end
+
+    choice = prompt_choice.downcase
+    if choice == "s"
+      longurl = prompt_url
+    
+      shorter = ShortUrl.create!(:long_url => longurl, :user_id => user.id)
+      print shorter.short_url
+    elsif choice == "v"
+      current_link = ShortUrl.last
+      Visit.record_visit!(user, current_link)
+      Launchy.open(current_link.long_url)
+    else
+      puts "Invalid move"
+      run
+    end
+  end
+
+end
+
+a = CLI.new
+a.run

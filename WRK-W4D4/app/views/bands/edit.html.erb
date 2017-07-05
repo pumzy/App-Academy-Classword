@@ -1,0 +1,15 @@
+<h1>Edit @band.name</h1>
+
+
+
+<form class="" action="<%= band_url(@band) %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <h3>Change Name</h3>
+  <input type="text" name="band[name]" value="<%= @band.name %>">
+  <br>
+  <br>
+  <input type="submit" >
+</form>
+
+<p> Please note that you can only edit the name of the band on this page. To edit or destroy albums, please go to their original pages </p>

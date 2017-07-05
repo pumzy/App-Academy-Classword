@@ -1,0 +1,25 @@
+
+<h1>List of Bands</h1>
+
+<table>
+  <tbody>
+    <% @bands.each do |band| %>
+      <tr>
+        <td><%= band.name %></td>
+        <td> <form action= "<%= band_url(band) %>" method="get">
+                <input type="submit" value = "Discorgraphy">
+              </form> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<br>
+
+<h3>Add a new band!</h3>
+<form action="<%= new_band_url %>" method="get">
+  <input type="submit"  value = "Take me to the new band page">
+</form>

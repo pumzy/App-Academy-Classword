@@ -1,0 +1,49 @@
+Javascript notes
+
+In JS can interact with the page without needing to reload
+
+AJAX - (Look this up)
+  - A request allows a user to submit a request to a website asynchronously
+
+Node was developed in order to allow JS to be used on the backend
+
+ECMAScript 6 is the newest version of javascript
+
+Object is the javascript equivalent of a hash
+Object.keys - This has support across all major browsers
+Object.values is more experimental
+
+function NBAplayer (name, team, pos) {
+  this.name = name;
+  this.team = team;
+  this.pos = pos;
+}
+
+
+- This is a constructor function - it will define what an NBA player will look like
+
+const curry = new NBAPlayer (
+
+Every function in JS will have a prototype defined on it
+NBAPlayer.prototype.dunk = function(){}
+  - This is equivalent to creating a method for a JS class
+
+curry__proto__ == NBAPlayer.prototype
+
+let curry = new NBAPlayer("Steph Curry", "", "");
+NBAPlayer.prototype.dunk = console.log(`${this.name} dunks!`)
+
+Can change the values by just going curry.name = "Steph"
+
+nested functions
+setting a variable through let something = something
+
+a closure is capturing a variable that was defined at the time that the over function was defined
+
+new value from inside the closure persists outside it
+ -- The scope is different from the ruby scope
+ --Callback - A function that is passed into another function. This is only executed when the user clicks the button, etc.
+
+Defining global variables is not  good practice
+
+Functions within functions

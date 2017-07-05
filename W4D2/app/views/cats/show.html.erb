@@ -1,0 +1,36 @@
+<h2>THIS IS SHOW!!</h2>
+
+
+
+  <table>
+    <tr>
+      <td>Name</td>
+      <td>Age</td>
+      <td>Color</td>
+      <td>Sex</td>
+      <td>Description</td>
+    </tr>
+    <tr>
+      <td><%= @cat.name %></td>
+      <td><%= @cat.age %></td>
+      <td><%= @cat.color %></td>
+      <td><%= @cat.sex %></td>
+      <td><%= @cat.description %></td>
+    </tr>
+    <tr>
+      <td>Start Date</td>
+      <td>End Date</td>
+      <td>Status</td>
+    </tr>
+    <% @cat.cat_rental_requests.each do |request| %>
+      <tr>
+        <td><%= request.start_date %></td>
+        <td><%= request.end_date %></td>
+        <td><%= request.status %></td>
+        <form class="" action=" <%= requests_url %> " method="post">
+          <input type="hidden" name="_method" value="PATCH">
+          <td><input type="submit">Approve</input></td>
+        </form>
+      </tr>
+    <% end %>
+  </table>

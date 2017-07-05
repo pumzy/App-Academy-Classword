@@ -1,0 +1,47 @@
+
+<table  border="1">
+  <caption> <%= @album.name %> - Tracks </caption>
+  <tr>
+    <th> Track Name </th>
+    <th> Regular/Bonus </th>
+    <th> Link </th>
+  </tr>
+  <% @album.tracks.each do |track| %>
+  <tr>
+    <th> <%= track.name %> </th>
+    <th> <%= track.bonus %> </th>
+    <th>  <form class="" action=" <%= track_url(track) %> " method="get">
+      <input type="submit" name="" value="Info about this sweet tune">
+    </form>
+    </th>
+  </tr>
+  <% end %>
+</table>
+
+<br>
+
+<form action= "<%= new_track_url %>" method="get">
+<input type="submit" value="Add a track!">
+</form>
+
+
+<br>
+<br>
+
+<form action= "<%= albums_url %>" method="get">
+<input type="submit" name="" value="Back to the Albums Page">
+</form>
+
+
+<br>
+<br>
+
+<form action= "<%= edit_album_url(@album) %>" method="get">
+<input type="submit" name="" value="Edit this album">
+</form>
+
+
+<form action= "<%= album_url(@album) %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="" value="Delete this Album">
+</form>

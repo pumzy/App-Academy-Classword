@@ -1,0 +1,104 @@
+Unit tests - only test one aspect of our code
+Integration testing for the conrollers 
+End to end testing 
+ 
+Testing a full process is an example of an end to end test
+Unit-Integration-End to End
+3 step 
+Testing a full process is an example of an end to end test
+Unit-Integration-End to End
+3 steps 
+
+Basically the steps for the testing looks very similar to the rspec - Normal describe and it blocks
+Same syntax for normal rspec and the capbara 
+
+Shoulda matchers - it {should (should is a keyword) validate_presence_of(:name, :etc) 
+it should validate_uniqueness_of(:whatever) 
+
+
+Can do valid? to check against our validations, and therefore add things to the errors hash for our custom errors. 
+
+it {should have_many(:whatevers)} 
+can add .through at the end in order to check if it going through 
+
+expect whatever to include(abc) 
+There is no ? at the end of the sentence
+Can just check if the programmer has passed the correct values to the where clause. 
+expect method.where_values_hash to eq colors:rainbow 
+
+factories are generators for fake instances of our models that we will use when testing it - We use the factory girl gem to create factories 
+
+FactoryGirl.define do 
+factory :capy do 
+  name {block normally using faker} 
+end 
+end
+If you use curly braces, the block will be run each time the factory is made, giving you a bunch of names -- without, it will be the same name always
+
+In order to create an instance using FactorGirl instance can simply do subject(:capy) {FactoryGirl.build(:capy)} 
+
+The name in the factory needs to match the model from which you are building a fake instance, and thus you need to refer to that name in the rspec also
+so Capy - :capy - :capy 
+
+Can override any aspects in the factory by simply refering to it in the building options hash  
+
+Can also overwrite factories in the factory file itself - use the overriding thing 
+
+Using FactoryGirl.create will actually persist the thing into the database
+
+Factories - class name 
+
+Contoller testing 
+-- Expect response to have_http_status(200) 
+-- Expect response to render_template(:index) 
+ get:index - we expect it to perform a get request from the index 
+
+rspec install 
+begin & rescue loops in tests that we do not expect to be successful - rescue the error to make sure it does not crash the thing - need to specify the error
+
+post :create, capy: {name: 'Joseph'. color:"maroon" } 
+
+
+Capybara makes an API available for end to end testing
+
+Navigation
+  visit
+  click-on 
+
+Forms 
+  fill_in "field" with "value" 
+  choose,check,uncheck 
+  select "option", from "Select box" 
+
+Assertions 
+  have_content 
+  current_page 
+  page 
+
+Debugging
+  save_and_open_page 
+
+
+feature is used in capybara, not describe 
+
+visit"/caps/new" 
+fill_in "name" with "efwef"
+fill_in "color" with "yellow" 
+
+expect current_path to eq whatever 
+
+click_on "Whatever" 
+expect(page).to have_content something 
+
+spec helper - can write shared helped methods accross specs
+
+def sign_up_user(name,...)
+  visit '/capys/new' 
+fill_in "name" with "name" 
+..
+
+can throw in a save and open page method to see whats going on 
+
+
+         
+
